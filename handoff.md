@@ -20,7 +20,7 @@ v1.0 已上线（2026-10-08）：https://tahun1-bc-kantu.vercel.app ，Hub 已�
 
 ## ⚠️ 注意事项
 - 本机测试：`python3 -m http.server 8941`，开 http://localhost:8941/index.html（bank.json 用 fetch 读，不能直接双击开档）。
-- 干扰项原则：一定要「图里看得出明显不对」；时间多半看不出来，所以时间格常有多个都算对。改题时守住这条。
+- 改题前先读 `agents.md` 的关键决定（干扰项原则、老师钦定的句子）。
 
 ## 🕐 最后更新
-2026-10-08
+2026-10-08｜Claude Code (Opus 5.5) @ mr007s-Macbook-Air.local｜Git：✅ 已推
