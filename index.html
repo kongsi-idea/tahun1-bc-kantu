@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>看图小侦探</title>
+<meta name="description" content="一年级华文：看图找线索，用时间、人物、地点、做什么拼出完整句子。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Noto+Sans+SC:wght@500;700;900&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E🔍%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="lamp" aria-hidden="true"></div>
+
+<!-- 主页 -->
+<section id="home" class="screen active">
+  <div class="cover">
+    <div class="cover-badge" aria-hidden="true">
+      <svg viewBox="0 0 64 64"><circle cx="26" cy="26" r="17" fill="url(#lens)" stroke="#8A5A14" stroke-width="5"/><path d="M38 38 L56 56" stroke="#5A3A0E" stroke-width="9" stroke-linecap="round"/><path d="M38 38 L56 56" stroke="#C9963C" stroke-width="5" stroke-linecap="round"/><path d="M17 19 a11 11 0 0 1 9 -6" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".85"/><defs><radialGradient id="lens" cx=".35" cy=".3"><stop offset="0" stop-color="#E8F7FF"/><stop offset="1" stop-color="#8FC4DB"/></radialGradient></defs></svg>
+    </div>
+    <h1 class="title">看图小侦探</h1>
+    <p class="subtitle">看图找线索，拼出完整的句子</p>
+    <div class="elements" aria-hidden="true">
+      <span class="chip k-time">时间</span><span class="chip k-who">人物</span><span class="chip k-place">地点</span><span class="chip k-act">做什么</span>
+    </div>
+
+    <div class="levels" role="radiogroup" aria-label="选关卡">
+      <button class="level-card selected" data-level="1" role="radio" aria-checked="true">
+        <span class="level-no">第一关</span>
+        <span class="level-name">颜色线索</span>
+        <span class="level-dots"><i class="k-time"></i><i class="k-who"></i><i class="k-place"></i><i class="k-act"></i></span>
+      </button>
+      <button class="level-card" data-level="2" role="radio" aria-checked="false">
+        <span class="level-no">第二关</span>
+        <span class="level-name">真正的侦探</span>
+        <span class="level-dots plain"><i></i><i></i><i></i><i></i></span>
+      </button>
+    </div>
+
+    <div class="home-actions">
+      <button id="btn-random" class="btn btn-brass big">开始破案 <small>随机 6 题</small></button>
+      <button id="btn-pick" class="btn btn-paper big">自己选题 <small>共 24 题</small></button>
+    </div>
+  </div>
+</section>
+
+<!-- 选题 -->
+<section id="picker" class="screen">
+  <header class="bar">
+    <button class="btn btn-ghost" data-go="home">← 主页</button>
+    <h2 class="bar-title">选一个案件</h2>
+    <span class="bar-spacer"></span>
+  </header>
+  <div id="pick-grid" class="pick-grid"></div>
+</section>
+
+<!-- 游戏 -->
+<section id="game" class="screen">
+  <header class="bar">
+    <button class="btn btn-ghost" data-go="home">← 主页</button>
+    <h2 class="bar-title"><span id="case-label">案件</span><span id="level-tag" class="level-tag"></span></h2>
+    <div id="progress" class="progress" aria-label="进度"></div>
+  </header>
+
+  <main class="desk">
+    <figure class="evidence">
+      <span class="clip" aria-hidden="true"></span>
+      <img id="scene" alt="看图：找出时间、人物、地点、做什么">
+      <figcaption id="evidence-tag">证物</figcaption>
+    </figure>
+
+    <div class="notebook">
+      <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div id="sentence" class="sentence" aria-live="polite"></div>
+      <p id="hint" class="hint" aria-live="polite"></p>
+      <div class="pool-head"><span>线索卡</span><small>点一下听读音，按住拖进句子</small></div>
+      <div id="pool" class="pool"></div>
+      <div class="notebook-foot">
+        <button id="btn-check" class="btn btn-brass check" disabled>
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="13" cy="13" r="8.5" fill="#E8F7FF" stroke="currentColor" stroke-width="3"/><path d="M19.5 19.5 L28 28" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></svg>
+          检查
+        </button>
+      </div>
+      <div id="stamp" class="stamp" aria-hidden="true">破案！</div>
+    </div>
+  </main>
+
+  <div id="solved" class="solved" hidden>
+    <div class="solved-card">
+      <div id="stars" class="stars"></div>
+      <p id="solved-sentence" class="solved-sentence"></p>
+      <div class="solved-actions">
+        <button id="btn-replay-say" class="btn btn-paper">🔊 再听一次</button>
+        <button id="btn-next" class="btn btn-brass">下一个案件 →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 结束 -->
+<section id="done" class="screen">
+  <div class="cover">
+    <h2 class="title small">全部破案！</h2>
+    <div id="done-stars" class="done-stars"></div>
+    <p id="done-text" class="subtitle"></p>
+    <div class="home-actions">
+      <button id="btn-again" class="btn btn-brass big">再玩一轮</button>
+      <button class="btn btn-paper big" data-go="home">回主页</button>
+    </div>
+  </div>
+</section>
+
+<script src="audio/manifest.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
