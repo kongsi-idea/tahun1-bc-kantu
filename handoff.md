@@ -11,7 +11,7 @@ v1.0 已上线（2026-10-08）：https://tahun1-bc-kantu.vercel.app ，Hub 已�
 - 朗读：edge-tts `zh-CN-XiaoxiaoNeural` -10%，`gen-voice.py` 读 bank.json＋say.json 生成全部卡片词、提示语、每题所有正确组合整句（197 句）。改题库后必须重跑。
 - 视觉：侦探笔记本（深蓝办公桌＋左上台灯、证物照片夹、活页笔记本、黄铜检查按钮、红色「破案！」章）。四要素色：时间琥珀 `#F4A62A`／人物玫瑰 `#E45F7B`／地点青绿 `#22A398`／做什么紫 `#7A68E0`。字体 ZCOOL XiaoWei（标题）＋ Noto Sans SC（卡片）＋ Baloo 2（数字）。
 - 课本出处：一年级课本教师提示（全文提取第 1854 行）要求讲述交代时间、地点、人物；无专门单元。
-- DSKP 对照：待补（只写本机官方 PDF 核对过的代码）
+- DSKP 对照：3.0 书写技能 — 3.2（3.2.1 练习写话，教材建议「看图写话」），依 kongsi-idea/docs/dskp/tahun1/bahasa-cina.md（已核官方 PDF）；1.3.1 也相关，但马来文用词未核对，未收进 dskp-index
 
 ## ➡️ 下一步
 1. 课堂实测，有意见登记进 tools-status.json 与 published-tools-coverage.md 优化备注。
