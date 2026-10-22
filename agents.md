@@ -19,3 +19,8 @@
 
 ## 测试
 `python3 -m http.server 8941` 后开 http://localhost:8941/index.html（bank.json 用 fetch，不能双击开档）。测试钩子 `window.__kantu`（`place(文字, 格)`、`state`、`clipKey`）。
+- **DSKP 对照**：3.0 书写技能 3.2（3.2.1 练习写话，教材建议「看图写话」），依 kongsi-idea/docs/dskp/tahun1/bahasa-cina.md（已核官方 PDF）；1.3.1 也相关，但马来文用词未核对，未收进 dskp-index。课本出处：教师提示（全文提取第1854行）要求交代时间、地点、人物，无专门单元。
+- **星星规则**：0 错 3 星／1 错 2 星／≥2 错 1 星；错格摇动＋「X不对」标签＋语音，1.1 秒后错卡回池，对格锁定。
+- **四要素色**：时间琥珀 `#F4A62A`／人物玫瑰 `#E45F7B`／地点青绿 `#22A398`／做什么紫 `#7A68E0`；字体 ZCOOL XiaoWei（标题）＋ Noto Sans SC（卡片）＋ Baloo 2（数字）。
+- **朗读规模**：`gen-voice.py` 读 bank.json＋say.json 生成全部卡片词、提示语、每题所有正确组合整句（197 句）。
+- **部署**：`vercel deploy --prod --yes --scope kongsi-idea`；Hub 登记 kongsi-idea 9b2285b，检查 `npm run check -- tahun1-bc-kantu`。
