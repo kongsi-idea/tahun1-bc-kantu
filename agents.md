@@ -24,3 +24,10 @@
 - **四要素色**：时间琥珀 `#F4A62A`／人物玫瑰 `#E45F7B`／地点青绿 `#22A398`／做什么紫 `#7A68E0`；字体 ZCOOL XiaoWei（标题）＋ Noto Sans SC（卡片）＋ Baloo 2（数字）。
 - **朗读规模**：`gen-voice.py` 读 bank.json＋say.json 生成全部卡片词、提示语、每题所有正确组合整句（197 句）。
 - **部署**：`vercel deploy --prod --yes --scope kongsi-idea`；Hub 登记 kongsi-idea 9b2285b，检查 `npm run check -- tahun1-bc-kantu`。
+
+## 语音包（2026-10-23）
+- 起因：Vercel 免费团队请求数用满；每句语音一个 mp3，学生每点一张卡、每台新设备都要多请求一次。
+- 现在：http(s) 下 `app.js` 的 `VP` 在**第一句播完后**才取一次 `audio/pack.mp3`（第一句照旧走单档，不跟 3MB 的包抢带宽），Web Audio 按 `audio/pack.js` 的 `[开始秒, 长度秒]` 切句播放。pack 没载完／AudioContext 未被点击唤醒（最多等 0.4 秒）／解码失败／file:// 时，照旧用 `<audio>` 逐档播 `audio/<key>.mp3`。**单档 mp3 必须留在仓库**（后备）。
+- 新句子停掉上一句，不叠音。iOS 静音开关：`navigator.audioSession.type='playback'`，旧 iOS 播循环无声 `<audio>`。
+- 改了 `bank.json`／`say.json`：`python3 gen-voice.py` → `python3 pack-voice.py`（需 ffmpeg）。漏跑 `pack-voice.py` 的话新句子走单档（仍有声，只是多一次请求）。
+- 本工具没有 service worker，所以没有离线清单要改。
